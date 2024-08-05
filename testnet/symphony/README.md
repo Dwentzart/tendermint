@@ -55,7 +55,7 @@ wget -O $HOME/.symphonyd/config/addrbook.json https://raw.githubusercontent.com/
 PORT=10
 ```
 ```
-symphonyd config node tcp://localhost:${PORT}657```
+symphonyd config node tcp://localhost:${PORT}657
 ```
 ```
 sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.symphonyd/config/config.toml
@@ -153,8 +153,7 @@ symphonyd tx staking create-validator \
 --commission-rate="0.1" \
 --commission-max-rate="0.15" \
 --commission-max-change-rate="0.05" \
---min-self-delegation=1000000000 \
---broadcast-mode block \
+--min-self-delegation=1000000 \
 --gas-adjustment=1.2 \
 --gas-prices="0.5note" \
 --gas=auto \
